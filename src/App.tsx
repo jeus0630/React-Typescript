@@ -1,13 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Profile from "./components/Profile";
+import { useDispatch, useSelector } from 'react-redux'
+import { Dispatch } from 'redux'
+import {RootState} from './index'
+import {increment} from './index'
 
 function App() {
+  const 꺼내온거 = useSelector( (state :RootState) => state );
+  const dispatch :Dispatch = useDispatch();
+
   return (
-    <div className="App">
-    <Profile name={"철수"}></Profile>
-    </div>
+      <div className="App">
+        { 꺼내온거.counter1.count }
+        <button onClick={()=>{dispatch(increment())}}>버튼</button>
+      </div>
   );
 }
 
